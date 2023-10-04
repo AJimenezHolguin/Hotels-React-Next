@@ -19,8 +19,13 @@ export const CardsFilter = () => {
   const [hotelsData, setHotelsData] = useState([])
 
   const fetchHotels = async() =>{
-    const data = await hotelData()
-    setHotelsData(data)
+    try {
+      const data = await hotelData()
+      setHotelsData(data)
+    } catch (error) {
+      console.error("Error en los hoteles")
+    }
+   
   }
 
 useEffect(()=>{
@@ -63,7 +68,7 @@ useEffect(()=>{
       dateTo.getTime() + dateTo.getTimezoneOffset() * 60000
     );
 
-    const filteredHotels = hotelsData.filter((hotel) => {
+    const filteredHotels = hotels.filter((hotel) => {
       const availabilityHotels = todayDate + hotel.availabilityFrom;
       const availabilityDays = availabilityHotels + hotel.availabilityTo;
 
