@@ -48,7 +48,8 @@
     border: none;
     border-radius: 0.6rem;
     color: var(--primarytexcolor);
-    background-color: #e26811;
+    /* background-color: #e26811; */
+    background-color:#CD6155  ;
     font-weight: bold;
     margin-left: 73%;
     cursor: pointer;
@@ -56,9 +57,9 @@
 
 .filtersBox__btn:hover {
 
-    color: #e26811;
+    color: #CD6155;
     background-color: rgba(255, 255, 255, 0.75);
-    border: 2px solid #e26811;
+    border: 2px solid #CD6155;
     font-weight: bold;
 }
 

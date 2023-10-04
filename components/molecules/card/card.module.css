@@ -4,7 +4,7 @@
 }
 
 .titleHotel {
-    color: #e26811;
+    color: #CD6155;
     /* color: rgb(128, 15, 113); */
     font-size: 28px;
     font-weight: bold;
@@ -16,7 +16,7 @@
 }
 
 .countryCityHotel,
-.priceHotel {
+.priceHotel,.roomsHotel{
     font-size: 14px;
     margin-top: 10px;
     font-weight: bold;
@@ -26,12 +26,12 @@
     font-size: 12px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #e26811;
+    background-color: #CD6155;
     width: 120px;
 
 }
 
 .buttonCardHotel:hover {
-    color: #e26811;
-    border: 1px solid #e26811;
+    color: #CD6155;
+    border: 1px solid #CD6155;
 }
