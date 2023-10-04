@@ -7,6 +7,8 @@ import styles from "../../organisms/cardsFilter/cardsFilter.module.css";
 import { hotelsRooms } from "@/app/utils/helper";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { useEffect } from "react";
+
 
 export const CardsFilter = () => {
   const [selectedCountry, setSelectedCountry] = useState("all");
@@ -14,7 +16,16 @@ export const CardsFilter = () => {
   const [dateHotelTo, setDateTo] = useState("all");
   const [selectedPrice, setSelectedPrice] = useState("all");
   const [selectedSize, setSelectedSize] = useState("all")
-  // const [hotelsData, setHotelsData] = useState([])
+  const [hotelsData, setHotelsData] = useState([])
+
+  const fetchHotels = async() =>{
+    const data = await hotelData()
+    setHotelsData(data)
+  }
+
+useEffect(()=>{
+  fetchHotels()
+},[])
 
   const clearButton = useCallback(() => {
     setSelectedCountry("all");
@@ -52,7 +63,7 @@ export const CardsFilter = () => {
       dateTo.getTime() + dateTo.getTimezoneOffset() * 60000
     );
 
-    const filteredHotels = hotels.filter((hotel) => {
+    const filteredHotels = hotelsData.filter((hotel) => {
       const availabilityHotels = todayDate + hotel.availabilityFrom;
       const availabilityDays = availabilityHotels + hotel.availabilityTo;
 
@@ -98,9 +109,9 @@ export const CardsFilter = () => {
         clear={clearButton}
         onSelectFromDate={onSelectFromDate}
       />
-        {filterHotels(hotelData).length > 0 ? (
+        {filterHotels(hotelsData).length > 0 ? (
       <div className={styles.cardsConteainer}>
-          {filterHotels(hotelData).map((hotel, index) => (
+          {filterHotels(hotelsData).map((hotel, index) => (
             <CardHotel key={index} hotel={hotel} />
           ))}
           </div>
