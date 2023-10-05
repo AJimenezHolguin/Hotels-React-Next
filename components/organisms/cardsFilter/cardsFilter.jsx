@@ -6,6 +6,7 @@ import styles from "../../organisms/cardsFilter/cardsFilter.module.css";
 import { hotelsRooms } from "@/app/utils/helper";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
+import { Snackbar } from "@mui/material";
 
 export const CardsFilter = ({ getDataHotels }) => {
   const [selectedCountry, setSelectedCountry] = useState("all");
@@ -14,6 +15,7 @@ export const CardsFilter = ({ getDataHotels }) => {
   const [selectedPrice, setSelectedPrice] = useState("all");
   const [selectedSize, setSelectedSize] = useState("all");
   const [filterHotels, setFilterHotels] = useState([]);
+  const [setshowSnackbar, setShowSnackbar] = useState(false)
 
   //ESTA ES LA FORMA DE HACER LA PETICION A LA API CON REACT Y NEXT JS 12
   //   const [hotelsData, setHotelsData] = useState([])
@@ -120,7 +122,7 @@ export const CardsFilter = ({ getDataHotels }) => {
       {filterHotels.length > 0 ? (
         <div className={styles.cardsConteainer}>
           {filterHotels.map((hotel, index) => (
-            <CardHotel key={index} hotel={hotel} />
+            <CardHotel key={index} hotel={hotel} Snackbar={setShowSnackbar}/>
           ))}
         </div>
       ) : (
@@ -130,6 +132,14 @@ export const CardsFilter = ({ getDataHotels }) => {
           — <strong>INTENTA NUEVAMENTE</strong>
         </Alert>
       )}
+      <Snackbar open={setshowSnackbar}
+       autoHideDuration={2000} 
+       onClose={setShowSnackbar}
+      >
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Hotel agregado correctamente
+        </Alert>
+      </Snackbar>
     </>
   );
 };

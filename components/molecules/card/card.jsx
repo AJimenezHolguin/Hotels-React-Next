@@ -5,8 +5,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import styles from "./card.module.css";
+import { MainButton } from "../../atoms/button/button";
 
-export const CardHotel = ({ hotel }) => {
+export const CardHotel = ({ hotel, Snackbar }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -54,12 +55,14 @@ export const CardHotel = ({ hotel }) => {
         </Typography>
       </CardContent>
       <CardActions className={styles.containerButton}>
-        <Button size="small" className={styles.buttonCardHotel}>
-          SHARE
-        </Button>
-        <Button size="small" className={styles.buttonCardHotel}>
-          LEARN MORE
-        </Button>
+        <MainButton className={styles.buttonCardHotel}>
+          DETAILS
+        </MainButton>
+        <MainButton className={styles.buttonCardHotel}
+        onClick={()=>Snackbar(true)}
+        >
+          BOOKINGS
+        </MainButton>
       </CardActions>
     </Card>
   );
