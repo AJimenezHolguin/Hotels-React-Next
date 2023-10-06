@@ -7,6 +7,7 @@ import { hotelsRooms } from "@/app/utils/helper";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import { Snackbar } from "@mui/material";
+import { AppContext } from "@/store/CurrentProvider";
 
 export const CardsFilter = ({ getDataHotels }) => {
   const [selectedCountry, setSelectedCountry] = useState("all");
@@ -16,6 +17,11 @@ export const CardsFilter = ({ getDataHotels }) => {
   const [selectedSize, setSelectedSize] = useState("all");
   const [filterHotels, setFilterHotels] = useState([]);
   const [setshowSnackbar, setShowSnackbar] = useState(false)
+  const {setHomePage} = useContext(AppContext)
+
+  useEffect(()=>{
+    setHomePage()
+  })
 
   //ESTA ES LA FORMA DE HACER LA PETICION A LA API CON REACT Y NEXT JS 12
   //   const [hotelsData, setHotelsData] = useState([])
