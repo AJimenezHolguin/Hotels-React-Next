@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useContext } from "react";
 import { CardHotel } from "../../molecules/card/card";
 import { Header } from "../../molecules/header/header";
 import styles from "../../organisms/cardsFilter/cardsFilter.module.css";
