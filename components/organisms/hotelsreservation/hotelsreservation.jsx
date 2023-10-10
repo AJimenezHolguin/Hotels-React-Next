@@ -10,7 +10,6 @@ export const HotelsReservation = () => {
   console.log(listHotelsReservation);
   return (
     <div>
-      <h2>bloqueados</h2>
       {listHotelsReservation.map((hotel, index) => (
         <CardHotel key={index} hotel={hotel} />
       ))}
